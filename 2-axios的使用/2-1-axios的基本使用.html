@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>axios的基本使用</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <h2>axios的基本使用</h2>
+  <hr>
+  <button>GET请求</button>
+  <button>POST请求</button>
+  <button>PUT请求</button>
+  <button>DELETE请求</button>
+
+  <script>
+    const btns = document.querySelectorAll('button')
+    // get请求
+    btns[0].addEventListener('click', () => {
+      axios({
+        // 请求方法
+        method: 'GET',
+        // URL
+        url: 'http://localhost:3000/posts/1'
+      }).then(response => {
+        console.log(response.data)
+      })
+    })
+
+    // post请求-添加一篇新文章
+    btns[1].addEventListener('click', () => {
+      axios({
+        method: 'POST',
+        url: 'http://localhost:3000/posts',
+        // 请求体内容
+        data: {
+          title: '这是一篇新文章',
+          author: '黄智守'
+        }
+      }).then(response => {
+        console.log(response)
+      })
+    })
+
+    // PUT-更新数据
+    btns[2].addEventListener('click', () => {
+      axios({
+        method: 'PUT',
+        url: 'http://localhost:3000/posts/2',
+        data: {
+          title: '这是一篇新文章',
+          author: 'LAO'
+        }
+      }).then(response => {
+        console.log(response)
+      })
+    })
+
+    // 删除数据
+    btns[3].addEventListener('click', () => {
+      axios({
+        method: 'DELETE',
+        url: 'http://localhost:3000/posts/2',
+        data: {
+          title: '这是一篇新文章',
+          author: 'LAO'
+        }
+      }).then(response => {
+        console.log(response)
+      })
+    })
+  </script>
+</body>
+
+</html>
